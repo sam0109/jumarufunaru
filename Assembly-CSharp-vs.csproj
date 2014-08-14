@@ -46,6 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\DestroyAfter.cs" />
+     <Compile Include="Assets\Elementals\Scripts\OrbitCamera.cs" />
+     <Compile Include="Assets\Elementals\Scripts\TestParticles.cs" />
      <Compile Include="Assets\Scripts\IO\loadLevel.cs" />
      <Compile Include="Assets\Scripts\IO\saveLevel.cs" />
      <Compile Include="Assets\Scripts\Inventory.cs" />
@@ -68,6 +71,7 @@
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Turbulence-Library\Readme.txt" />
      <None Include="Assets\Necromancer GUI\Kingthings.txt" />
+     <None Include="Assets\Elementals\!Readme.txt" />
      <None Include="Assets\Necromancer GUI\Readme.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>C:/Users/sam/Documents/jumarufunaru/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>

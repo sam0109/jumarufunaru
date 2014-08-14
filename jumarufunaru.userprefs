@@ -2,10 +2,15 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Shoot.cs">
     <Files>
-      <File FileName="Assets\getShot.cs" Line="9" Column="3" />
-      <File FileName="Assets\Shoot.cs" Line="20" Column="62" />
-      <File FileName="Assets\zombieHealth.cs" Line="15" Column="4" />
-      <File FileName="Assets\health.cs" Line="18" Column="26" />
+      <File FileName="Assets\getShot.cs" Line="21" Column="1" />
+      <File FileName="Assets\Shoot.cs" Line="30" Column="62" />
+      <File FileName="Assets\zombieHealth.cs" Line="1" Column="1" />
+      <File FileName="Assets\health.cs" Line="1" Column="1" />
+      <File FileName="Assets\followPlayer.cs" Line="25" Column="4" />
+      <File FileName="Assets\Scripts\Miner.cs" Line="1" Column="1" />
+      <File FileName="Assets\DestroyAfter.cs" Line="15" Column="24" />
+      <File FileName="Assets\Scripts\takeDamage.cs" Line="34" Column="26" />
+      <File FileName="Assets\Scripts\Placer.cs" Line="20" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

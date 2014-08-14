@@ -60,12 +60,6 @@ public class followPlayer : MonoBehaviour {
 		{
 			coll.gameObject.SendMessage("playerDamage", playerDamage);
 		}
-		if(player.transform.position.y < transform.position.y + .1f){
-			coll.gameObject.SendMessage("damage", groundDamage * Time.deltaTime, SendMessageOptions.DontRequireReceiver);
-		}
-		else if(coll.gameObject.transform.position.y > transform.position.y - .9f){
-			coll.gameObject.SendMessage("damage", groundDamage * Time.deltaTime, SendMessageOptions.DontRequireReceiver);
-		}
 	}
 
 	void OnTriggerEnter2D (Collider2D coll)

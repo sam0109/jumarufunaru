@@ -17,7 +17,7 @@ public class Placer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (1)) 
+		if (Input.GetMouseButton(1)) 
 		{
 			mousePos = Input.mousePosition;
 			mousePos = Camera.main.ScreenToWorldPoint (new Vector3 (mousePos.x, mousePos.y, 15f));
@@ -25,7 +25,13 @@ public class Placer : MonoBehaviour {
 				mousePos.x <= transform.position.x + reachDistance && 
 				mousePos.y >= transform.position.y - reachDistance && 
 				mousePos.y <= transform.position.y + reachDistance && 
-				Physics2D.Raycast(new Vector3 (Mathf.RoundToInt(mousePos.x), Mathf.RoundToInt(mousePos.y), -1), Vector3.forward).collider == null)
+				Physics2D.Raycast(new Vector3 (Mathf.RoundToInt(mousePos.x), Mathf.RoundToInt(mousePos.y), -1), Vector3.forward).collider == null &&
+			   (
+				Physics2D.Raycast(new Vector3 (Mathf.RoundToInt(mousePos.x - 1), Mathf.RoundToInt(mousePos.y), -1), Vector3.forward).collider != null ||
+				Physics2D.Raycast(new Vector3 (Mathf.RoundToInt(mousePos.x + 1), Mathf.RoundToInt(mousePos.y), -1), Vector3.forward).collider != null ||
+			    Physics2D.Raycast(new Vector3 (Mathf.RoundToInt(mousePos.x), Mathf.RoundToInt(mousePos.y - 1), -1), Vector3.forward).collider != null ||
+				Physics2D.Raycast(new Vector3 (Mathf.RoundToInt(mousePos.x), Mathf.RoundToInt(mousePos.y + 1), -1), Vector3.forward).collider != null)
+			   )
 			{
 				switch(pGUI.selected)
 				{
