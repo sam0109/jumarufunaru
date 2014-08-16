@@ -1,16 +1,22 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Shoot.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Image Effects (Pro Only)\Blur.js">
     <Files>
-      <File FileName="Assets\getShot.cs" Line="21" Column="1" />
-      <File FileName="Assets\Shoot.cs" Line="30" Column="62" />
-      <File FileName="Assets\zombieHealth.cs" Line="1" Column="1" />
-      <File FileName="Assets\health.cs" Line="1" Column="1" />
-      <File FileName="Assets\followPlayer.cs" Line="25" Column="4" />
       <File FileName="Assets\Scripts\Miner.cs" Line="1" Column="1" />
-      <File FileName="Assets\DestroyAfter.cs" Line="15" Column="24" />
-      <File FileName="Assets\Scripts\takeDamage.cs" Line="34" Column="26" />
-      <File FileName="Assets\Scripts\Placer.cs" Line="20" Column="27" />
+      <File FileName="Assets\Scripts\takeDamage.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Placer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerGui.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\RenderWindow.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\buildLevel.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LightSource.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Shadow.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\damageOverlay.cs" Line="1" Column="1" />
+      <File FileName="Assets\2DVLS\READ-ME.txt" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\aimAtMouse.cs" Line="1" Column="1" />
+      <File FileName="Assets\2DVLS\Core\Light2D.cs" Line="591" Column="113" />
+      <File FileName="Assets\2DVLS\Core\Shaders\2DVLS_Diffuse.shader" Line="1" Column="1" />
+      <File FileName="Assets\2DVLS\Samples\ProLighting\Render2DLights.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Image Effects (Pro Only)\Blur.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

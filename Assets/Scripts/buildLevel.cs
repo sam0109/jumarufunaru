@@ -7,6 +7,7 @@ public class buildLevel : MonoBehaviour
 	public GameObject player;
 	public loadLevel levelData;
 	public Rect renderMe;
+	public GameObject air; //0x00000000
 	public GameObject dirt; //0x00000001
 	public GameObject grass; //0x00000002
 	public GameObject stone; //0x00000003
@@ -26,6 +27,7 @@ public class buildLevel : MonoBehaviour
 				if(i >= 0 && j >= 0 && j < levelSize[1] && i < levelSize[0] && rendered[i, j] == null){
 					switch(levelData.mapPos[i][j]){
 					case(0):
+						//rendered[i,j] = (GameObject)Instantiate(air, new Vector2(i, j), Quaternion.identity);
 						break;
 					case(1):
 						rendered[i,j] = (GameObject)Instantiate(dirt, new Vector2(i, j), Quaternion.identity);

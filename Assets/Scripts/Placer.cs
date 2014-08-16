@@ -9,10 +9,11 @@ public class Placer : MonoBehaviour {
 	public PlayerGui pGUI;
 	public float reachDistance;
 	Vector3 mousePos;
+	buildLevel level;
 	// Use this for initialization
 	void Start () 
 	{
-	
+		level = GameObject.Find("Terrain").GetComponent<buildLevel>();
 	}
 	
 	// Update is called once per frame
@@ -25,13 +26,13 @@ public class Placer : MonoBehaviour {
 				mousePos.x <= transform.position.x + reachDistance && 
 				mousePos.y >= transform.position.y - reachDistance && 
 				mousePos.y <= transform.position.y + reachDistance && 
-				Physics2D.Raycast(new Vector3 (Mathf.RoundToInt(mousePos.x), Mathf.RoundToInt(mousePos.y), -1), Vector3.forward).collider == null &&
+			   level.rendered[Mathf.RoundToInt(mousePos.x), Mathf.RoundToInt(mousePos.y)] == null &&
 			   (
-				Physics2D.Raycast(new Vector3 (Mathf.RoundToInt(mousePos.x - 1), Mathf.RoundToInt(mousePos.y), -1), Vector3.forward).collider != null ||
-				Physics2D.Raycast(new Vector3 (Mathf.RoundToInt(mousePos.x + 1), Mathf.RoundToInt(mousePos.y), -1), Vector3.forward).collider != null ||
-			    Physics2D.Raycast(new Vector3 (Mathf.RoundToInt(mousePos.x), Mathf.RoundToInt(mousePos.y - 1), -1), Vector3.forward).collider != null ||
-				Physics2D.Raycast(new Vector3 (Mathf.RoundToInt(mousePos.x), Mathf.RoundToInt(mousePos.y + 1), -1), Vector3.forward).collider != null)
-			   )
+				level.rendered[Mathf.Max(0, Mathf.RoundToInt(mousePos.x - 1)), Mathf.Max(0, Mathf.RoundToInt(mousePos.y))] != null ||
+				level.rendered[Mathf.Max(0, Mathf.RoundToInt(mousePos.x + 1)), Mathf.Max(0, Mathf.RoundToInt(mousePos.y))] != null ||
+				level.rendered[Mathf.Max(0, Mathf.RoundToInt(mousePos.x)), Mathf.Max(0, Mathf.RoundToInt(mousePos.y - 1))] != null ||
+				level.rendered[Mathf.Max(0, Mathf.RoundToInt(mousePos.x)), Mathf.Max(0, Mathf.RoundToInt(mousePos.y + 1))] != null
+			   ))
 			{
 				switch(pGUI.selected)
 				{
