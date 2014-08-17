@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: 6dfc27721e3c28d45aa193cb52bb978e
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: Gradient
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

@@ -19,7 +19,7 @@ public class Shadow : MonoBehaviour {
 		level = GameObject.Find("Terrain").GetComponent<buildLevel>();
 
 		if(Mathf.RoundToInt(transform.position.x - 1) > 0){
-			leftBlock = level.rendered[Mathf.RoundToInt(transform.position.x - 1), Mathf.RoundToInt(transform.position.y)];
+			leftBlock = level.rendered[Mathf.RoundToInt(transform.position.x - 1)][Mathf.RoundToInt(transform.position.y)];
 			if(leftBlock != null){
 				leftBlockShadow = leftBlock.GetComponent<Shadow>();
 				leftBlockShadow.rightBlock = gameObject;
@@ -30,21 +30,21 @@ public class Shadow : MonoBehaviour {
 			leftBlock = null;
 		}
 
-		rightBlock = level.rendered[Mathf.RoundToInt(transform.position.x + 1), Mathf.RoundToInt(transform.position.y)];
+		rightBlock = level.rendered[Mathf.RoundToInt(transform.position.x + 1)][Mathf.RoundToInt(transform.position.y)];
 		if(rightBlock != null){
 			rightBlockShadow = rightBlock.GetComponent<Shadow>();
 			rightBlockShadow.leftBlock = gameObject;
 			rightBlockShadow.leftBlockShadow = this;
 		}
 
-		upBlock = level.rendered[Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y + 1)];
+		upBlock = level.rendered[Mathf.RoundToInt(transform.position.x)][Mathf.RoundToInt(transform.position.y + 1)];
 		if(upBlock != null){
 			upBlockShadow = upBlock.GetComponent<Shadow>();
 			upBlockShadow.downBlock = gameObject;
 			upBlockShadow.downBlockShadow = this;
 		}
 
-		downBlock = level.rendered[Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y - 1)];
+		downBlock = level.rendered[Mathf.RoundToInt(transform.position.x)][Mathf.RoundToInt(transform.position.y - 1)];
 		if(downBlock != null){
 			downBlockShadow = downBlock.GetComponent<Shadow>();
 			downBlockShadow.upBlock = gameObject;

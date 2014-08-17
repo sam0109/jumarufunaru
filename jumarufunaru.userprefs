@@ -1,22 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Image Effects (Pro Only)\Blur.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\buildLevel.cs">
     <Files>
-      <File FileName="Assets\Scripts\Miner.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LightMap.cs" Line="32" Column="17" />
+      <File FileName="Assets\Scripts\IO\loadLevel.cs" Line="7" Column="36" />
+      <File FileName="Assets\Scripts\buildLevel.cs" Line="34" Column="6" />
       <File FileName="Assets\Scripts\takeDamage.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Placer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerGui.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\RenderWindow.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\buildLevel.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LightSource.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Shadow.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\damageOverlay.cs" Line="1" Column="1" />
-      <File FileName="Assets\2DVLS\READ-ME.txt" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\aimAtMouse.cs" Line="1" Column="1" />
-      <File FileName="Assets\2DVLS\Core\Light2D.cs" Line="591" Column="113" />
-      <File FileName="Assets\2DVLS\Core\Shaders\2DVLS_Diffuse.shader" Line="1" Column="1" />
-      <File FileName="Assets\2DVLS\Samples\ProLighting\Render2DLights.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Image Effects (Pro Only)\Blur.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Placer.cs" Line="49" Column="51" />
+      <File FileName="Assets\Scripts\characterMover.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Shadow.cs" Line="80" Column="1" />
+      <File FileName="Assets\Scripts\LightSource.cs" Line="20" Column="59" />
+      <File FileName="Assets\Scripts\GetShadow.cs" Line="18" Column="121" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

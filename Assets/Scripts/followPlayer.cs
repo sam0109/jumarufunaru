@@ -31,7 +31,7 @@ public class followPlayer : MonoBehaviour {
 			direction = -1;
 		}
 		//follow player
-		rigidbody2D.AddForce(transform.right * moveSpeed * direction);
+		rigidbody2D.AddForce(transform.right * moveSpeed * direction * Time.deltaTime);
 
 		//jump if below the player
 		if(player.transform.position.x > transform.position.x - .1f && player.transform.position.x < transform.position.x + .1f && player.transform.position.y > transform.position.y + .1f)

@@ -9,10 +9,12 @@ public class takeDamage : MonoBehaviour {
 	float healTimer;
 	public GameObject particles;
 	loadLevel level;
+	LightMap shadow;
 
 	// Use this for initialization
 	void Start () {
 		level = GameObject.Find("Terrain").GetComponent<loadLevel>();
+		shadow = GameObject.Find("Terrain").GetComponent<LightMap>();
 		level.mapPos[Mathf.RoundToInt(transform.position.x)][Mathf.RoundToInt(transform.position.y)] = dataValue;
 		healTimer = healRate;
 		currentHealth = maxHealth;
@@ -34,6 +36,7 @@ public class takeDamage : MonoBehaviour {
 	void damage(float amount){
 		currentHealth -= amount;
 		if(currentHealth <= 0){
+			shadow.updateLight();
 			level.mapPos[Mathf.RoundToInt(transform.position.x)][Mathf.RoundToInt(transform.position.y)] = 0x00000000;
 			Instantiate(particles, transform.position, Quaternion.identity);
 			Destroy(gameObject);

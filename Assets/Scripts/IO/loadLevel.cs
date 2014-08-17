@@ -4,7 +4,7 @@ using System.IO;
 using System.Collections.Generic;
 
 public class loadLevel : MonoBehaviour {
-	const int chunkSize = 1000;
+	public const int chunkSize = 1000;
 	public string fileIOVersion = "0.0.1";
 	public List<byte[]> mapPos = new List<byte[]>{};
 	byte[] currentCol = new byte[chunkSize];

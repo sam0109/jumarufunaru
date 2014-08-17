@@ -17,7 +17,7 @@ public class LightSource : MonoBehaviour {
 			waited = true;
 		}
 		else{
-			level.rendered[Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y)].GetComponent<Shadow>().lightLevel = intensity;
+			level.rendered[Mathf.RoundToInt(transform.position.x)][Mathf.RoundToInt(transform.position.y)].GetComponent<Shadow>().lightLevel = intensity;
 		}
 	}
 }
