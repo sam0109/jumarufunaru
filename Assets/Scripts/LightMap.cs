@@ -7,16 +7,22 @@ public class LightMap : MonoBehaviour {
 	public float sunBrightness;
 	public float spreadCoefficient;
 	public loadLevel level;
-	public List<float[]> levelLighting = new List<float[]>{};
+	public List<float[]> levelLighting;
+	public List<LightSource> lights;
 	// Use this for initialization
+	
+	void Awake(){
+		lights = new List<LightSource>{};
+	}
+	
 	void Start () {
+		levelLighting = new List<float[]>{};
 		generateLightMap();
 		castSun();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 	
 	void generateLightMap(){
@@ -41,6 +47,11 @@ public class LightMap : MonoBehaviour {
 				spread(i, j, levelLighting[i][j]);
 			}
 		}
+		foreach(LightSource light in lights){
+			levelLighting[Mathf.RoundToInt(light.transform.position.x)][Mathf.RoundToInt(light.transform.position.y)] = light.intensity;
+			spread(Mathf.RoundToInt(light.transform.position.x), Mathf.RoundToInt(light.transform.position.y), light.intensity);
+			print ("rendering light");
+		}
 	}
 	void updateColumn(int col){
 		float sunShaft = sunBrightness;
@@ -54,9 +65,9 @@ public class LightMap : MonoBehaviour {
 			}
 		}
 	}
-	
 	public void updateLight(){
 		castSun();
+		
 	}
 	void spread(int col, int row, float originValue){
 		float spreadValue = originValue - lightBlockingLevel * spreadCoefficient;

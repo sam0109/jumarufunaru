@@ -2,22 +2,24 @@
 using System.Collections;
 
 public class LightSource : MonoBehaviour {
-	buildLevel level;
+	LightMap levelLighting;
 	public int intensity;
-	bool waited;
+	int posX;
+	int posY;
 	// Use this for initialization
 	void Start () {
-		waited = false;
-		level = GameObject.Find("Terrain").GetComponent<buildLevel>();
+		posX = 0;
+		posY = 0;
+		levelLighting = GameObject.Find("Terrain").GetComponent<LightMap>();
+		levelLighting.lights.Add(this);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(!waited){
-			waited = true;
-		}
-		else{
-			level.rendered[Mathf.RoundToInt(transform.position.x)][Mathf.RoundToInt(transform.position.y)].GetComponent<Shadow>().lightLevel = intensity;
+		if(posX != Mathf.RoundToInt(transform.position.x) || posY != Mathf.RoundToInt(transform.position.x)){
+			levelLighting.updateLight();
+			posX = Mathf.RoundToInt(transform.position.x);
+			posY = Mathf.RoundToInt(transform.position.y);
 		}
 	}
 }
