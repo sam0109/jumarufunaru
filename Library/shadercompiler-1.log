@@ -1,72 +1,27 @@
-Base path: C:/Program Files (x86)/Unity/Editor/Data
-Pipe name: \\.\pipe\UnityShaderCompiler-1-4616
+Base path: D:/Program Files (x86)/Unity/Editor/Data
+Pipe name: \\.\pipe\UnityShaderCompiler-1-1752
 Cmd: getPlatforms
 Cmd: preprocess
-  insize=8276 outsize=953 ok=1
+  insize=7481 outsize=3578 ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=8942 outsize=634 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=8942 outsize=6268 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=6915 outsize=436 kw=POINT ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=6915 outsize=6278 kw=POINT ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=6546 outsize=260 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=6546 outsize=867 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=8624 outsize=685 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=8624 outsize=6133 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
 Cmd: preprocess
-  insize=8276 outsize=951 ok=1
+  insize=7481 outsize=33862 ok=1
 Cmd: compileSnippet
-  api=1 type=0 insize=7392 outsize=437 kw=POINT SHADOWS_OFF ok=1
+  api=1 type=0 insize=6915 outsize=292 kw=DIRECTIONAL ok=1
 Cmd: compileSnippet
-  api=1 type=1 insize=7392 outsize=1369 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=7386 outsize=437 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=7386 outsize=1290 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=7391 outsize=437 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=7391 outsize=1295 kw=POINT SHADOWS_OFF ok=1
-Cmd: preprocess
-  insize=8291 outsize=953 ok=1
-Cmd: compileSnippet
-  error: 2 plat 1 at (253): syntax error, unexpected type identifier, expecting ',' or ';' at token "half4" type name expected at token "half4" invalid type in type constructor
-  api=1 type=0 insize=7407 outsize=0 kw=POINT SHADOWS_OFF ok=0
-Cmd: preprocess
-  insize=8276 outsize=953 ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=7392 outsize=437 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=7392 outsize=1398 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=7386 outsize=437 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=7386 outsize=1319 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=7391 outsize=437 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=7391 outsize=1324 kw=POINT SHADOWS_OFF ok=1
-Cmd: preprocess
-  insize=8281 outsize=951 ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=7397 outsize=437 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=7397 outsize=1420 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=7391 outsize=437 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=7391 outsize=1341 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=7396 outsize=437 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=7396 outsize=1346 kw=POINT SHADOWS_OFF ok=1
-Cmd: preprocess
-  insize=8276 outsize=953 ok=1
-Cmd: preprocess
-  insize=8277 outsize=953 ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=7393 outsize=437 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=7393 outsize=1399 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=7387 outsize=437 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=7387 outsize=1320 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=7392 outsize=437 kw=POINT SHADOWS_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=7392 outsize=1325 kw=POINT SHADOWS_OFF ok=1
-Unhandled exception: Readfile from pipe failed. GLE=The pipe has been ended.
-
-
-Quitting shader compiler process
+  api=1 type=1 insize=6915 outsize=6141 kw=DIRECTIONAL ok=1
