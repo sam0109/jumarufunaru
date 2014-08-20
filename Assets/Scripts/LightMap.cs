@@ -9,7 +9,8 @@ public class LightMap : MonoBehaviour {
 	public loadLevel level;
 	public List<float[]> levelLighting;
 	public List<LightSource> lights;
-	// Use this for initialization
+	public GameObject player;
+	Rect lightMe;
 	
 	void Awake(){
 		lights = new List<LightSource>{};
@@ -17,32 +18,26 @@ public class LightMap : MonoBehaviour {
 	
 	void Start () {
 		levelLighting = new List<float[]>{};
-		generateLightMap();
+		growLightMap();
+	}
+
+	void Update (){
 		castSun();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
-	
-	void generateLightMap(){
-		for(int i = 0; i < level.mapPos.Count; i++){
-			levelLighting.Add(new float[loadLevel.chunkSize]);
-		}
-	}
-	
+
 	public void growLightMap(){
 		while(levelLighting.Count < level.mapPos.Count){
 			levelLighting.Add(new float[loadLevel.chunkSize]);
 		}
-		updateLight();
+		castSun();
 	}
-	
+
 	void castSun(){
-		for(int i = 0; i < level.mapPos.Count; i++){
+		lightMe = player.GetComponent<RenderWindow>().renderMe;
+		for(int i = Mathf.Max(0, Mathf.RoundToInt(lightMe.x)); i < level.mapPos.Count && i <= lightMe.xMax; i++){
 			updateColumn(i);
 		}
-		for(int i = 0; i < level.mapPos.Count; i++){
+		for(int i = Mathf.Max(0, Mathf.RoundToInt(lightMe.x)); i < level.mapPos.Count && i <= lightMe.xMax; i++){
 			for(int j = loadLevel.chunkSize - 1; j >= 0 ; j--){
 				spread(i, j, levelLighting[i][j]);
 			}
@@ -50,9 +45,9 @@ public class LightMap : MonoBehaviour {
 		foreach(LightSource light in lights){
 			levelLighting[Mathf.RoundToInt(light.transform.position.x)][Mathf.RoundToInt(light.transform.position.y)] = light.intensity;
 			spread(Mathf.RoundToInt(light.transform.position.x), Mathf.RoundToInt(light.transform.position.y), light.intensity);
-			print ("rendering light");
 		}
 	}
+
 	void updateColumn(int col){
 		float sunShaft = sunBrightness;
 		for(int j = loadLevel.chunkSize - 1; j >= 0 ; j--){
@@ -65,9 +60,9 @@ public class LightMap : MonoBehaviour {
 			}
 		}
 	}
-	public void updateLight(){
+
+	void updateLight(){
 		castSun();
-		
 	}
 	void spread(int col, int row, float originValue){
 		float spreadValue = originValue - lightBlockingLevel * spreadCoefficient;
