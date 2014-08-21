@@ -11,8 +11,6 @@ public class GetShadow : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		displayedSprite = GetComponent<SpriteRenderer>();
-		posX = Mathf.RoundToInt(transform.position.x);
-		posY = Mathf.RoundToInt(transform.position.y);
 	}
 	
 	// Update is called once per frame

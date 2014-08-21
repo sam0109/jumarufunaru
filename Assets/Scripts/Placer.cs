@@ -2,13 +2,9 @@
 using System.Collections;
 
 public class Placer : MonoBehaviour {
-	public GameObject dirt;
-	public GameObject grass;
-	public GameObject stone;
 	public Inventory inv;
 	public PlayerGui pGUI;
 	public float reachDistance;
-	LightMap shadow;
 	Vector3 mousePos;
 	buildLevel level;
 	loadLevel levelData;
@@ -29,36 +25,31 @@ public class Placer : MonoBehaviour {
 				mousePos.x <= transform.position.x + reachDistance && 
 				mousePos.y >= transform.position.y - reachDistance && 
 				mousePos.y <= transform.position.y + reachDistance && 
-			   level.rendered[Mathf.RoundToInt(mousePos.x)][Mathf.RoundToInt(mousePos.y)].tag == "air" &&
+			  	levelData.mapPos[Mathf.RoundToInt(mousePos.x)][Mathf.RoundToInt(mousePos.y)] == 0x00000000 &&
 			   (
-				level.rendered[Mathf.Max(0, Mathf.RoundToInt(mousePos.x - 1))][Mathf.Max(0, Mathf.RoundToInt(mousePos.y))].tag != "air" ||
-				level.rendered[Mathf.Max(0, Mathf.RoundToInt(mousePos.x + 1))][Mathf.Max(0, Mathf.RoundToInt(mousePos.y))].tag != "air" ||
-				level.rendered[Mathf.Max(0, Mathf.RoundToInt(mousePos.x))][Mathf.Max(0, Mathf.RoundToInt(mousePos.y - 1))].tag != "air" ||
-				level.rendered[Mathf.Max(0, Mathf.RoundToInt(mousePos.x))][Mathf.Max(0, Mathf.RoundToInt(mousePos.y + 1))].tag != "air"
+				levelData.mapPos[Mathf.Max(0, Mathf.RoundToInt(mousePos.x - 1))][Mathf.Max(0, Mathf.RoundToInt(mousePos.y))] != 0x00000000 ||
+				levelData.mapPos[Mathf.Max(0, Mathf.RoundToInt(mousePos.x + 1))][Mathf.Max(0, Mathf.RoundToInt(mousePos.y))] != 0x00000000 ||
+				levelData.mapPos[Mathf.Max(0, Mathf.RoundToInt(mousePos.x))][Mathf.Max(0, Mathf.RoundToInt(mousePos.y - 1))] != 0x00000000 ||
+				levelData.mapPos[Mathf.Max(0, Mathf.RoundToInt(mousePos.x))][Mathf.Max(0, Mathf.RoundToInt(mousePos.y + 1))] != 0x00000000
 			   ))
 			{
 				
 				switch(pGUI.selected)
 				{
 				case(1): //Dirt
-					Destroy(level.rendered[Mathf.RoundToInt(mousePos.x)][Mathf.RoundToInt(mousePos.y)]);
-					level.rendered[Mathf.RoundToInt(mousePos.x)][Mathf.RoundToInt(mousePos.y)] = (GameObject)Instantiate(dirt, new Vector2(Mathf.RoundToInt(mousePos.x), Mathf.RoundToInt(mousePos.y)), Quaternion.identity);
-					level.rendered[Mathf.RoundToInt(mousePos.x)][Mathf.RoundToInt(mousePos.y)].GetComponent<takeDamage>().level = levelData;
+					levelData.mapPos[Mathf.RoundToInt(mousePos.x)][Mathf.RoundToInt(mousePos.y)] = 0x00000001;
 					break;
 				case(2): //Grass
-					Destroy(level.rendered[Mathf.RoundToInt(mousePos.x)][Mathf.RoundToInt(mousePos.y)]);
-					level.rendered[Mathf.RoundToInt(mousePos.x)][Mathf.RoundToInt(mousePos.y)] = (GameObject)Instantiate(grass, new Vector2(Mathf.RoundToInt(mousePos.x), Mathf.RoundToInt(mousePos.y)), Quaternion.identity);
-					level.rendered[Mathf.RoundToInt(mousePos.x)][Mathf.RoundToInt(mousePos.y)].GetComponent<takeDamage>().level = levelData;
+					levelData.mapPos[Mathf.RoundToInt(mousePos.x)][Mathf.RoundToInt(mousePos.y)] = 0x00000002;
 					break;
 				case(3): //Stone
-					Destroy(level.rendered[Mathf.RoundToInt(mousePos.x)][Mathf.RoundToInt(mousePos.y)]);
-					level.rendered[Mathf.RoundToInt(mousePos.x)][Mathf.RoundToInt(mousePos.y)] = (GameObject)Instantiate(stone, new Vector2(Mathf.RoundToInt(mousePos.x), Mathf.RoundToInt(mousePos.y)), Quaternion.identity);
-					level.rendered[Mathf.RoundToInt(mousePos.x)][Mathf.RoundToInt(mousePos.y)].GetComponent<takeDamage>().level = levelData;
+					levelData.mapPos[Mathf.RoundToInt(mousePos.x)][Mathf.RoundToInt(mousePos.y)] = 0x00000003;
 					break;
 				default:
 					print ("Unknown Selection: " + pGUI.selected);
 					break;
 				}
+				level.blockArray[new Point(Mathf.RoundToInt(mousePos.x), Mathf.RoundToInt(mousePos.y))].GetComponent<AssignBlock>().SetupBlock();
 			}
 		}
 	}

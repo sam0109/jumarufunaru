@@ -3,13 +3,18 @@ using System.Collections;
 
 public class takeDamage : MonoBehaviour {
 	public byte dataValue;
+
 	public float maxHealth;
 	public float currentHealth;
+
 	public float healRate;
 	float healTimer;
+
 	public GameObject particles;
-	public loadLevel level;
-	bool delayedStartCommands;
+
+	public loadLevel levelData;
+	public AssignBlock block;
+
 	public Sprite[] damageStages;
 	SpriteRenderer sprite;
 	public int damageStage;
@@ -20,16 +25,11 @@ public class takeDamage : MonoBehaviour {
 		sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
 		healTimer = healRate;
 		currentHealth = maxHealth;
-		delayedStartCommands = true;
 		currentDamageStage = damageStage;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if(delayedStartCommands){
-			delayedStartCommands = false;
-			level.mapPos[Mathf.RoundToInt(transform.position.x)][Mathf.RoundToInt(transform.position.y)] = dataValue;
-		}
 		if(currentHealth < maxHealth){
 			healTimer -= Time.deltaTime;
 			if(healTimer <= 0){
@@ -48,9 +48,10 @@ public class takeDamage : MonoBehaviour {
 	void damage(float amount){
 		currentHealth -= amount;
 		if(currentHealth <= 0){
-			level.mapPos[Mathf.RoundToInt(transform.position.x)][Mathf.RoundToInt(transform.position.y)] = 0x00000000;
+			levelData.mapPos[Mathf.RoundToInt(transform.position.x)][Mathf.RoundToInt(transform.position.y)] = 0x00000000;
 			Instantiate(particles, transform.position, Quaternion.identity);
-			Destroy(gameObject);
+			currentHealth = maxHealth;
+			block.SetupBlock();
 		}
 	}
 }

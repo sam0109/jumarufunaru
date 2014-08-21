@@ -162,7 +162,6 @@
      <Compile Include="Assets\Scripts\Placer.cs" />
      <Compile Include="Assets\Scripts\PlayerGui.cs" />
      <Compile Include="Assets\Scripts\RenderWindow.cs" />
-     <Compile Include="Assets\Scripts\Shadow.cs" />
      <Compile Include="Assets\Scripts\Shoot.cs" />
      <Compile Include="Assets\Scripts\TerrainGenerator.cs" />
      <Compile Include="Assets\Scripts\aimAtMouse.cs" />

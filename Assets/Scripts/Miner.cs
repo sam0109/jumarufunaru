@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 
 public class Miner : MonoBehaviour
@@ -36,4 +36,4 @@ public class Miner : MonoBehaviour
 		}
 		swingTimer -= Time.deltaTime;
 	}
-}
+} */

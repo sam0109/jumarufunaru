@@ -10,66 +10,98 @@ public class buildLevel : MonoBehaviour
 	public GameObject player;
 	public loadLevel levelData;
 	public Rect renderMe;
-	public GameObject shadow;
-	GameObject shadowSetter;
-	public GameObject air; //0x00000000
-	public GameObject dirt; //0x00000001
-	public GameObject grass; //0x00000002
-	public GameObject stone; //0x00000003
 	public GameObject genericBlock;
-	public List<GameObject[]> rendered;
 	public LightMap lightMap;
 
 	//pooling variables
 
-	public List<GameObject> blocks;
+	public Dictionary<Point, GameObject> blockArray;
+	IntRect blockLocations;
 
 	void Start(){
-		rendered = new List<GameObject[]>();
-		/*renderMe = player.GetComponent<RenderWindow>().renderMe;
+		renderMe = player.GetComponent<RenderWindow>().renderMe;
+		blockLocations = new IntRect(Mathf.RoundToInt(renderMe.x), Mathf.RoundToInt(renderMe.y), Mathf.RoundToInt(renderMe.width), Mathf.RoundToInt(renderMe.height));
+		blockArray = new Dictionary<Point, GameObject>(100);
 
-		for(int i = Mathf.RoundToInt(renderMe.x); i <= renderMe.xMax; i++){
-			for(int j = Mathf.RoundToInt(renderMe.y); j <= renderMe.yMax; j++){
-				blocks.Add((GameObject)Instantiate(genericBlock, new Vector2(i, j), Quaternion.identity));
+		while(blockLocations.x + blockLocations.width + 1 > levelData.mapPos.Count){
+			levelData.mapPos.Add(generateColumn(blockLocations.x + blockLocations.width));
+		}
+
+		lightMap.growLightMap();
+
+		for(int i = blockLocations.x; i <= blockLocations.x + blockLocations.width; i++){
+			for(int j = Mathf.RoundToInt(blockLocations.y); j <= blockLocations.y + blockLocations.height; j++){
+				blockArray.Add(new Point(i, j), (GameObject)Instantiate(genericBlock, new Vector2(i, j), Quaternion.identity));
 			}
-		} */
+		}
+		print ("Rendered");
 	}
 
 	void Update(){
-		/*renderMe = player.GetComponent<RenderWindow>().renderMe;
-		foreach(GameObject block in blocks){
-			if(!renderMe.Contains(block.transform.position)){
-				block.SetActive(false);
+		renderMe = player.GetComponent<RenderWindow>().renderMe;
+
+		while(renderMe.x < blockLocations.x - 1){
+			print ("Pushing Left");
+			blockLocations.x -= 1;
+			GameObject currentBlock;
+			for(int i = blockLocations.y; i < blockLocations.y + blockLocations.height + 1; i++){
+				currentBlock = blockArray[new Point(blockLocations.x + blockLocations.width + 1, i)];
+				currentBlock.transform.position = new Vector2(blockLocations.x, i);
+				currentBlock.GetComponent<AssignBlock>().SetupBlock();
+				blockArray.Remove(new Point(blockLocations.x + blockLocations.width + 1, i));
+				blockArray.Add(new Point(blockLocations.x, i), currentBlock);
 			}
 		}
-		bool foundBlock;
-		for(int i = Mathf.RoundToInt(renderMe.x); i <= renderMe.xMax; i++){
-			for(int j = Mathf.RoundToInt(renderMe.y); j <= renderMe.yMax; j++){
-				foundBlock = false;
-				foreach(GameObject block in blocks){
-					if(block.GetActive() == true && Mathf.RoundToInt(transform.position.x) == i && Mathf.RoundToInt(transform.position.y) == j){
-						foundBlock = true;
-					}
-				}
-				if(!foundBlock){
-					foreach(GameObject block in blocks){
-						if(block.GetActive() == false){
-							block.transform.position = new Vector2(i, j);
-							block.SetActive(true);
-							break;
-						}
-					}
-					Debug.Log("Ran out of blocks!");
-				}
-			}
-		} */
 
-		renderMe = player.GetComponent<RenderWindow>().renderMe;
-		for(int i = Mathf.RoundToInt(renderMe.x); i <= renderMe.xMax; i++){
+		while(renderMe.x > blockLocations.x + 1){
+			print ("Pushing Right");
+			blockLocations.x += 1;
+			if(blockLocations.x + blockLocations.width + 1 > levelData.mapPos.Count){
+				levelData.mapPos.Add(generateColumn(blockLocations.x + blockLocations.width));
+				lightMap.growLightMap();
+			}
+			GameObject currentBlock;
+			for(int i = blockLocations.y; i < blockLocations.y + blockLocations.height + 1; i++){
+				currentBlock = blockArray[new Point(blockLocations.x - 1, i)];
+				currentBlock.transform.position = new Vector2(blockLocations.x + blockLocations.width, i);
+				currentBlock.GetComponent<AssignBlock>().SetupBlock();
+				blockArray.Remove(new Point(blockLocations.x - 1, i));
+				blockArray.Add(new Point(blockLocations.x + blockLocations.width, i), currentBlock);
+			}
+		}
+
+		while(renderMe.y < blockLocations.y - 1){
+			print ("Pushing Down");
+			blockLocations.y -= 1;
+			GameObject currentBlock;
+			for(int i = blockLocations.x; i < blockLocations.x + blockLocations.width + 1; i++){
+				currentBlock = blockArray[new Point(i, blockLocations.y + blockLocations.height + 1)];
+				currentBlock.transform.position = new Vector2(i, blockLocations.y);
+				currentBlock.GetComponent<AssignBlock>().SetupBlock();
+				blockArray.Remove(new Point(i, blockLocations.y + blockLocations.height + 1));
+				blockArray.Add(new Point(i, blockLocations.y), currentBlock);
+			}
+		}
+
+		while(renderMe.y > blockLocations.y + 1){
+			print ("Pushing Up");
+			blockLocations.y += 1;
+			GameObject currentBlock;
+			for(int i = blockLocations.x; i < blockLocations.x + blockLocations.width + 1; i++){
+				currentBlock = blockArray[new Point(i, blockLocations.y - 1)];
+				currentBlock.transform.position = new Vector2(i, blockLocations.y + blockLocations.height);
+				currentBlock.GetComponent<AssignBlock>().SetupBlock();
+				blockArray.Remove(new Point(i, blockLocations.y - 1));
+				blockArray.Add(new Point(i, blockLocations.y + blockLocations.height), currentBlock);
+			}
+		}
+
+		/*renderMe = player.GetComponent<RenderWindow>().renderMe;
+		for(int i = Mathf.RoundToInt(renderMe.x); i <= renderMe.x + blockLocations.width; i++){
 			if(i <= rendered.Count){
 				rendered.Add(new GameObject[loadLevel.chunkSize]);
 			}
-			for(int j = Mathf.RoundToInt(renderMe.y); j <= renderMe.yMax; j++){
+			for(int j = Mathf.RoundToInt(renderMe.y); j <= renderMe.y + blockLocations.height; j++){
 				if(i >= 0 && j >= 0 && j < loadLevel.chunkSize && rendered[i][j] == null){
 				
 					while(i >= levelData.mapPos.Count){
@@ -107,7 +139,7 @@ public class buildLevel : MonoBehaviour
 					}
 				}
 			}
-		}
+		}*/
 	}
 	
 	byte[] generateColumn(int xCoord){ 						//TODO: make better map generation logic.
@@ -122,5 +154,27 @@ public class buildLevel : MonoBehaviour
 				newColumn[i] = 0x00000001;
 		}
 		return newColumn;
+	}
+}
+
+public struct Point
+{
+	public int x, y;
+
+	public Point(int xPos, int yPos){
+		x = xPos;
+		y = yPos;
+	}
+}
+
+public struct IntRect
+{
+	public int x, y, width, height;
+	
+	public IntRect(int xPos, int yPos, int xWidth, int yHeight){
+		x = xPos;
+		y = yPos;
+		width = xWidth;
+		height = yHeight;
 	}
 }
